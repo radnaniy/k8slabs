@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8lab-deployment
+  labels:
+    app: k8s-application
+spec:
+  selector:
+    matchLabels:
+      project: epam-lab
+  template:
+    metadata:
+      labels:
+        project: epam-lab
+    spec:
+      containers:
+        - name: epam-lab-web
+          image: radnaniy/k8slab:latest
+          ports:
+            - containerPort: 80

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8lab-deployment-autoscale
+  labels:
+    app: k8s-application
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      project: epam-lab-autoscale
+  template:
+    metadata:
+      labels:
+        project: epam-lab-autoscale
+    spec:
+      containers:
+        - name: epam-lab-replica-web
+          image: radnaniy/k8slab:latest
+          ports:
+            - containerPort: 80
